@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang-"en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>EmployeeVacationMange</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<style>
+			.navbar-inverse .navbar-brand:hover, 
+			.navbar-inverse .navbar-brand:focus {
+			  background-color: transparent;
+			  color: #999999;}
+		</style>
+	</head>
+	
+	
+	
+	<body style="background:light">
+		 <nav class="navbar navbar-inverse navbar-fixed-top">
+		  <div class="container">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <Label class="navbar-brand" href="#">EmployeeVacationMange</Label>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+			  <ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#contact">Contact</a></li>
+			  </ul>
+			</div><!--/.nav-collapse -->
+		  </div>
+		</nav>
+	
+	
+		<div class="container">
+		<H1><center><u></u><center></H1>
+		<div class="container theme-showcase" role="main">
+		<div class="jumbotron">
+		<section style="background:LightBlue">
+			<H3><u>Emplyee Vacation Information</u></H3>
+			<div>
+				<Label>Total Vacation Days:</Label><br>
+				<i><Label style="padding-left:2%;"><font color="Blue">Allowed[<label name="AllowedVacValue" id="AllowedVacValueID" >-</label>]</font> / 
+						<font color="Red">Enjoyed[<label name="EnjoyedVacValue" id="EnjoyedVacValueID" >-</label>]</font> / 
+						<font color="Green">Remianing[<label name="RemianingVacValue" id="RemianingVacValueID" >-</label>]</font>
+				</Label></i>
+				<button name="RefreshEmpVacButton" id="RefreshEmpVacButtonID" onclick="UpdateVacationDays()"()><--Refresh Status</button>
+				<br />
+				<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">List My Vacations</button>
+				<div class="container">
+					<div id="demo" class="collapse">
+						#     ----    date   ----   Approved[?overridden]/Declined/Pending <br>
+						1           6/6/2016             Approved<br>
+						2           7/6/2016             Approved<br>
+						3			1/10/2016			 Approved[overridden]<br>
+						4			1/11/2016			 Declined<br>
+						5			1/12/2016			 Pending   -chang-<br>
+						6			5/12/2016			 Pending   -chang- <br>
+					</div>
+				</div>
+			</div>
+		</section >
+		<section style="background:LightBlue">
+			<H3><u>Pick My Vacation days</u></H3>
+			<form name="calcDate">
+				Starting day:
+				<input type="date" name="sday" id="sDayID">
+				Ending day:
+				<input type="date" name="eday" id="eDayID">
+				<button type="button" onclick="RangeInDays()" >OK</button>
+			</form>
+		</section>
+		</div></div>
+		</div><!-- /.container -->
+		
+		
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+		<script src="../../dist/js/bootstrap.min.js"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+		
+	</body>
+	<script type="text/javascript">
+			//Update Total Vacation Days from DB
+			function UpdateVacationDays() {
+				document.getElementById('AllowedVacValueID').innerHTML = '100';
+				document.getElementById('EnjoyedVacValueID').innerHTML = '60';
+				document.getElementById('RemianingVacValueID').innerHTML = '40';
+			}
+			
+			/*function UpdateVacationDays2() {
+				document.getElementById('AllowedVacValueID').innerHTML = '50';
+				document.getElementById('EnjoyedVacValueID').innerHTML = '25';
+				document.getElementById('RemianingVacValueID').innerHTML = '25';
+			}*/
+			
+			function RangeInDays(){
+				var startDate = (new Date(document.getElementById('sDayID').value)).getTime();
+				var endDate = (new Date(document.getElementById('eDayID').value)).getTime();
+				var timeDiff = Math.abs(endDate - startDate);
+				var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+				window.alert("diffDays: " + diffDays);
+			}
+			
+			window.onload = UpdateVacationDays();
+	</script>
+</html>

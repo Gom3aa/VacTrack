@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang-"en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>EmployeeVacationMange</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<style>
+			.navbar-inverse .navbar-brand:hover, 
+			.navbar-inverse .navbar-brand:focus {
+			  background-color: transparent;
+			  color: #999999;
+			}
+			.borderless td, .borderless th {
+				border: none;
+			}
+		</style>
+	</head>
+	
+	
+	
+	<body style="background:light">
+		 <nav class="navbar navbar-inverse navbar-fixed-top">
+		  <div class="container">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <Label class="navbar-brand" href="#">EmployeeVacationMange</Label>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+			  <ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#contact">Contact</a></li>
+			  </ul>
+			</div><!--/.nav-collapse -->
+		  </div>
+		</nav>
+	
+	
+		<div class="container">
+		<H1><center><u></u><center></H1>
+		<div class="container theme-showcase" role="main">
+		<div class="jumbotron">
+		<section style="background:LightBlue">
+			<H2><span class="label label-default"><u>Emplyee Vacation Information</u></span></H2><br>
+			<div>
+				<H4><Label class="label label-primary">Total Vacation Days:</Label></H4>
+				<i><Label style="padding-left:2%;"><font color="Blue">Allowed[<label name="AllowedVacValue" id="AllowedVacValueID" >-</label>]</font> / 
+						<font color="Red">Enjoyed[<label name="EnjoyedVacValue" id="EnjoyedVacValueID" >-</label>]</font> / 
+						<font color="Green">Remianing[<label name="RemianingVacValue" id="RemianingVacValueID" >-</label>]</font>
+				</Label></i>
+				<button name="RefreshEmpVacButton" id="RefreshEmpVacButtonID" type="button" class="btn btn-sm btn-success"onclick="UpdateVacationDays()" ><b>Refresh Status</b></button><br>
+				<br />
+				<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">List My Vacations</button>
+				<div class="container">
+					<div id="demo" class="collapse">
+						<div class="row">
+							<div class="col-md-6">
+							  <table class="table table-bordered">
+								<thead>
+								  <tr>
+									<th>#</th>
+									<th>date</th>
+									<th>Approved[?overridden]/Declined/Pending</th>
+									<th>Change</th>
+								  </tr>
+								</thead>
+								<tbody>
+								  <tr>
+									<td>1</td>
+									<td>6/6/2016</td>
+									<td>Approved</td>
+									<td>-</td>
+								  </tr>
+								  <tr>
+									<td>2</td>
+									<td>7/6/2016</td>
+									<td>Approved</td>
+									<td>-</td>
+								  </tr>
+								  <tr>
+									<td>3</td>
+									<td>1/10/2016</td>
+									<td>Approved[overridden]</td>
+									<td>-</td>
+								  </tr>
+								  <tr>
+									<td>4</td>
+									<td>1/11/2016</td>
+									<td>Declined</td>
+									<td>-</td>
+								  </tr>
+								  <tr>
+									<td>5</td>
+									<td>1/12/2016</td>
+									<td>Pending</td>
+									<td>Change</td>
+								  </tr>
+								  <tr>
+									<td>6</td>
+									<td>5/12/2016</td>
+									<td>Pending</td>
+									<td>Change</td>
+								  </tr>
+								</tbody>
+							  </table>
+							</div>
+						</div>
+						
+						
+					</div>
+				</div>
+			</div>
+		</section >
+		<section style="background:LightBlue">
+			<H2><span class="label label-default"><u>Pick My Vacation days</u></span></H2><br>
+			
+			<form name="VactionSubmitionForm" onSubmit="JavaScript:preReqSend()">
+				<table >
+					<thead>
+						<tr>
+							<th>Starting day:</th>
+							<th><input type="date" name="sday" id="sDayID"></th>
+						</tr>
+						<tr>
+							<th>Ending day:</th>
+							<th><input type="date" name="eday" id="eDayID" onclick="sDayIDIsNaN()"><br></th>
+						</tr>
+
+						<tr>
+							<th>Notes:</th>
+							<th><textarea name="NotesVac" id="NotesVacID"></textarea></th>
+							 
+						</tr>
+						
+					</thead>
+				</table>
+				<button type="button" disabled >upload file (Disabled)</button> NotYETAVILABLE<br>
+				<button type="submit" class="btn btn btn-primary"  >Submit My Vacation</button><br>
+				
+			</form>
+		</section>
+		</div></div>
+		</div><!-- /.container -->
+		
+		
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+		<script src="../../dist/js/bootstrap.min.js"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+		
+	</body>
+	
+	<script type="text/javascript" src="submitVacs.js"></script>
+	<script type="text/javascript">
+			window.onload = UpdateVacationDays();
+	</script>
+
+</html>
